@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-export default (value, defaultValue) => {
+export default (value: string, defaultValue: string | undefined) => {
   const arrowRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
 

@@ -1,9 +1,10 @@
 "use client";
 
 import React, { FC } from "react";
+import List from "./list";
 
 const HomeTemplate: FC = () => {
-  return <div>index</div>;
+  return <List />;
 };
 
 export default HomeTemplate;

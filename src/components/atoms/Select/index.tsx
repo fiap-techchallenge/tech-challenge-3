@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useCallback, FocusEvent } from "react";
+import React, { FC, useMemo, useCallback, FocusEvent, JSX } from "react";
 import SelectProps from "./props";
 import { cn } from "@/utils/cn";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
@@ -18,7 +18,7 @@ const Select: FC<SelectProps> = ({
 }) => {
   const { arrowRef, hasValue, setHasValue, setIsFocused } = useAnimation(
     value,
-    defaultValue,
+    defaultValue
   );
 
   const renderOptions = useMemo(
@@ -28,7 +28,7 @@ const Select: FC<SelectProps> = ({
           {option.label}
         </option>
       )),
-    [options],
+    [options]
   );
 
   const handleFocus = useCallback((): void => {
@@ -43,7 +43,7 @@ const Select: FC<SelectProps> = ({
       }
       setIsFocused(false);
     },
-    [setHasValue, setIsFocused],
+    [setHasValue, setIsFocused]
   );
 
   return (
