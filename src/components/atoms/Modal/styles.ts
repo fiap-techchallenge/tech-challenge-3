@@ -1,4 +1,6 @@
-export const Container = `
+import { classToString } from "@/utils/class-to-string";
+
+export const Container = classToString`
     fixed
     top-0
     left-0
@@ -17,7 +19,7 @@ export const Container = `
     data-[open=true]:z-50
 `;
 
-export const HitBoxClose = `
+export const HitBoxClose = classToString`
     absolute
     top-1/2
     -translate-y-1/2
@@ -29,7 +31,7 @@ export const HitBoxClose = `
     cursor-pointer
 `;
 
-export const Modal = `
+export const Modal = classToString`
     relative
     z-50
     bg-white
@@ -53,7 +55,7 @@ export const Modal = `
     data-[open=true]:opacity-100
 `;
 
-export const Header = `
+export const Header = classToString`
     overflow-hidden
     flex
     justify-between
@@ -67,7 +69,7 @@ export const Header = `
     xl:mt-0
 `;
 
-export const Title = `
+export const Title = classToString`
     text-lg
     text-usafaBlue
     font-semibold
@@ -76,7 +78,7 @@ export const Title = `
     lg:text-2xl
 `;
 
-export const ButtonClose = `
+export const ButtonClose = classToString`
     group
     flex
     items-center
@@ -92,7 +94,7 @@ export const ButtonClose = `
     hover:text-white
 `;
 
-export const ButtonCloseIcon = `
+export const ButtonCloseIcon = classToString`
     group-hover:text-white
 
     w-6
@@ -101,7 +103,7 @@ export const ButtonCloseIcon = `
     duration-300
 `;
 
-export const Content = `
+export const Content = classToString`
     overflow-auto
     max-h-[80vh]
 

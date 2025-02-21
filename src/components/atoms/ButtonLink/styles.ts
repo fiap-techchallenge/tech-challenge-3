@@ -1,4 +1,6 @@
-export const ButtonLink = `
+import { classToString } from "@/utils/class-to-string";
+
+export const ButtonLink = classToString`
     text-deepSaffron
     text-base
     underline

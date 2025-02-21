@@ -1,4 +1,6 @@
-export const Button = `
+import { classToString } from "@/utils/class-to-string";
+
+export const Button = classToString`
     flex
     flex-row
     gap-2

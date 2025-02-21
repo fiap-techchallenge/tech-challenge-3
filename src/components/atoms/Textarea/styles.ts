@@ -1,14 +1,16 @@
-export const Container = `
+import { classToString } from "@/utils/class-to-string";
+
+export const Container = classToString`
     w-full
 `;
 
-export const Content = `
+export const Content = classToString`
     relative
     w-full
     h-40
 `;
 
-export const TextArea = `
+export const TextArea = classToString`
     peer
 
     border-t-slateGray
@@ -45,7 +47,7 @@ export const TextArea = `
     data-[has-value=true]:border-t-transparent
 `;
 
-export const Label = `
+export const Label = classToString`
     peer-placeholder-shown:text-blue-slateGray
     peer-disabled:opacity-65
     peer-disabled:peer-placeholder-shown:opacity-65
@@ -107,7 +109,7 @@ export const Label = `
     after:border-chineseWhite
 `;
 
-export const ErrorMessage = `
+export const ErrorMessage = classToString`
     mt-2
     text-sm
     text-rustyRed

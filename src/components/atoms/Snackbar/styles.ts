@@ -1,4 +1,6 @@
-export const ContainerStatus = `
+import { classToString } from "@/utils/class-to-string";
+
+export const ContainerStatus = classToString`
     fixed
     scale-0
     z-50
@@ -23,7 +25,7 @@ export const ContainerStatus = `
     data-[status=info]:text-richBlack
 `;
 
-export const BarTime = `
+export const BarTime = classToString`
     absolute
     top-0
     left-0
@@ -33,7 +35,7 @@ export const BarTime = `
     h-1
 `;
 
-export const Content = `
+export const Content = classToString`
     flex
     flex-row
     gap-3
@@ -41,7 +43,7 @@ export const Content = `
     items-center
 `;
 
-export const Text = `
+export const Text = classToString`
     flex
     flex-row
     justify-center
@@ -53,11 +55,11 @@ export const Text = `
     md:text-base
 `;
 
-export const Message = `
+export const Message = classToString`
     w-full
 `;
 
-export const CloseIcon = `
+export const CloseIcon = classToString`
     w-8
     h-8
     p-1
@@ -75,13 +77,13 @@ export const CloseIcon = `
     data-[status=info]:text-richBlack
 `;
 
-export const IconInformationBlack = `
+export const IconInformationBlack = classToString`
     w-6
     h-6
     text-richBlack 
 `;
 
-export const IconInformationWhite = `
+export const IconInformationWhite = classToString`
     w-6
     h-6
     text-white

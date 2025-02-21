@@ -1,14 +1,16 @@
-export const Container = `
+import { classToString } from "@/utils/class-to-string";
+
+export const Container = classToString`
     w-full
 `;
 
-export const Content = `
+export const Content = classToString`
     relative
     w-full
     h-auto
 `;
 
-export const Input = `
+export const Input = classToString`
     peer
 
     border-slateGray
@@ -39,7 +41,7 @@ export const Input = `
     data-[has-value=true]:border-t-transparent
 `;
 
-export const Label = `
+export const Label = classToString`
     peer-disabled:opacity-50
     peer-placeholder-shown:text-base
     peer-focus:text-[11px]
@@ -98,7 +100,7 @@ export const Label = `
     after:transition-all
 `;
 
-export const ErrorMessage = `
+export const ErrorMessage = classToString`
     mt-2
     text-sm
     text-rustyRed

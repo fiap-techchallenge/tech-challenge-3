@@ -1,14 +1,16 @@
-export const Container = `
+import { classToString } from "@/utils/class-to-string";
+
+export const Container = classToString`
     w-full
 `;
 
-export const Content = `
+export const Content = classToString`
     relative
     w-full
     h-auto
 `;
 
-export const Select = `
+export const Select = classToString`
     peer focus:border-darkMidnightBlue
 
     border-t-slateGray
@@ -39,7 +41,7 @@ export const Select = `
     data-[has-value=true]:border-t-transparent
 `;
 
-export const Label = `
+export const Label = classToString`
     peer-disabled:opacity-65
     peer-disabled:before:opacity-65
     peer-focus:text-[11px]
@@ -104,7 +106,7 @@ export const Label = `
     data-[has-value=false]:after:-top-[1.15rem]
 `;
 
-export const ArrowIcon = `
+export const ArrowIcon = classToString`
     w-5
     h-5
     pointer-events-none
@@ -114,7 +116,7 @@ export const ArrowIcon = `
     text-darkMidnightBlue/65
 `;
 
-export const ErrorMessage = `
+export const ErrorMessage = classToString`
     mt-2
     text-sm
     text-rustyRed
