@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend para Aplicação de Blogging
 
-## Getting Started
+## Descrição do Projeto
 
-First, run the development server:
+Este projeto consiste no desenvolvimento da interface gráfica de uma aplicação de blogging, utilizando React, para proporcionar uma experiencia de usuário intuitiva e eficiente para professores(as) e estudantes. A aplicação permite a interação com os endpoints REST ja implementados no backend, garantindo funcionalidades essenciais como listagem, criação, edição e exclusão de postagens.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tecnologias Utilizadas
+
+- React com componentes funcionais e hooks
+- Tailwind para estilização
+- Axios para consumo da API REST
+- Context API
+
+## Funcionalidades
+
+### 1. Página Principal (Lista de Posts)
+
+- Exibicao de uma lista de posts com titulo, autor e descricao breve
+- Campo de busca para filtragem de posts
+
+rota: `/`
+
+### 2. Página de Leitura de Post
+
+- Exibe o conteudo completo de um post
+
+rota: `/posts/:id`
+
+### 3. Página de Criação de Postagens
+
+- Formulario para criação de postagens por docentes
+- Campos para titulo, conteudo e autor
+- Botao para enviar post ao servidor
+
+rota: `/new-post`
+
+### 4. Página de Edição de Postagens
+
+- Formulário para edição de postagens existentes
+- Carregamento dos dados do post para edição
+- Botão para salvar alteracoes
+
+rota: `/edit-post/:id`
+
+### 5. Página Administrativa
+
+- Lista de todas as postagens
+- Opções para editar e excluir posts
+- Controles de administracao restritos a usuários autenticados
+
+rota: `/admin`
+
+### 6. Autenticação e Autorização
+
+- Login para professores(as)
+- Restrição de acesso para páginas de criação, edição e administração
+
+## Como Executar o Projeto
+
+### Requisitos
+
+- Node.js instalado
+- Gerenciador de pacotes npm ou yarn
+
+### Passos para Execucao
+
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/fiap-techchallenge/tech-challenge-3.git
+   ```
+2. Acesse o diretório do projeto:
+   ```sh
+   cd tech-challenge-3
+   ```
+3. Instale as dependências:
+   ```sh
+   npm install
+   ```
+4. Inicie a aplicação:
+   ```sh
+   npm start
+   ```
+
+## Estrutura do Projeto
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+/ tech-challenge-3
+  |-- src/
+      |-- components/      # Componentes reutilizáveis
+      |-- pages/           # Páginas da aplicação
+      |-- hooks/           # Hooks custom
+      |-- context/         # Gerenciamento de estado
+      |-- styles/          # Estilizacao global
+      |-- lib/             # Funcoes utilitárias
+  |-- public/              # Arquivos estáticos
+  |-- package.json         # Dependencias do projeto
+  |-- README.md            # Documentacao do projeto
+  |-- .gitignore           # Arquivos ignorados pelo git
+  |-- .eslintrc.json       # Configuração do ESLint
+  |-- .eslintrc.config.mjs # Configuração do ESLint
+  |-- .env.development     # Variaveis de ambiente para desenvolvimento
+  |-- .env.production      # Variaveis de ambiente para produção
+  |-- tailwind.config.js   # Configuração do Tailwind CSS
+  |-- postcss.config.js    # Configuração do PostCSS
+  |-- tsconfig.json        # Configuração do TypeScript
+  |-- next.config.js       # Configuração do Next.js
+  |-- components.json      # Configuração do Storybook
+  |-- next-env.d.ts        # Tipagem do Next.js
+```
