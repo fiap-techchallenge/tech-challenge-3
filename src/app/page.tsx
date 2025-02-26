@@ -1,18 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { usePosts } from "@/contexts/posts-context";
 import { Navbar } from "@/components/navbar";
 import { StyledButton } from "@/components/styled-button";
+import { listPosts } from "@/api/list-posts";
+import { GetListPostsResponse } from "@/api/list-posts/response";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const { posts } = usePosts();
+  const [fetchedPosts, setPosts] = useState<GetListPostsResponse>([]);
 
-  const filteredPosts = posts.filter((post) => {
+  const fetchPosts = async (): Promise<void> => {
+    try {
+      const posts = await listPosts();
+      setPosts(posts);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const filteredPosts = fetchedPosts.filter((post): boolean => {
     const searchContent =
       `${post.title} ${post.content} ${post.author}`.toLowerCase();
     return searchContent.includes(searchQuery.toLowerCase());
@@ -55,7 +69,7 @@ export default function Home() {
                 </CardContent>
                 <CardFooter>
                   <StyledButton
-                    href={`/posts/${post.slug}`}
+                    href={`/posts/${post.id}`}
                     buttonType="readMore"
                     className="w-full"
                   >
