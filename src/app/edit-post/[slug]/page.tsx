@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,20 +11,43 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { postSchema, type PostFormData } from "@/lib/validations";
 import * as yup from "yup";
-import { usePosts } from "@/contexts/posts-context";
 import ProtectedRoute from "@/components/protected-route";
 import { Navbar } from "@/components/navbar";
 import { StyledButton } from "@/components/styled-button";
+import { updatePost } from "@/api/update-post";
+import { getPost } from "@/api/get-post";
+import { type GetPostResponse } from "@/api/get-post/response";
 
 export default function EditPost() {
   const router = useRouter();
   const { slug } = useParams<{ slug: string }>();
-  const { getPostBySlug, updatePost } = usePosts();
+  const [fetchedPosts, setPosts] = useState<GetPostResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<PostFormData>>({});
-  const [post, setPost] = useState(getPostBySlug(slug as string));
 
-  if (!post) {
+  const handleUpdate = async (data: PostFormData) => {
+    try {
+      const response = await updatePost(slug, data);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchPost = async (): Promise<void> => {
+    try {
+      const post = await getPost(slug);
+      setPosts(post);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPost();
+  }, [slug]);
+
+  if (!fetchedPosts) {
     return (
       <ProtectedRoute>
         <div className="min-h-screen bg-background flex items-center justify-center">
@@ -63,7 +86,7 @@ export default function EditPost() {
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       // Update post
-      updatePost(slug as string, data);
+      await handleUpdate(data);
 
       // Dismiss loading toast and show success
       toast.dismiss(loadingToast);
@@ -106,7 +129,11 @@ export default function EditPost() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="title">Título</Label>
-                  <Input id="title" name="title" defaultValue={post.title} />
+                  <Input
+                    id="title"
+                    name="title"
+                    defaultValue={fetchedPosts.title}
+                  />
                   {errors.title && (
                     <p className="text-sm text-destructive">{errors.title}</p>
                   )}
@@ -116,7 +143,7 @@ export default function EditPost() {
                   <Textarea
                     id="content"
                     name="content"
-                    defaultValue={post.content}
+                    defaultValue={fetchedPosts.content}
                     className="min-h-[200px]"
                   />
                   {errors.content && (
@@ -125,7 +152,11 @@ export default function EditPost() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="author">Autor</Label>
-                  <Input id="author" name="author" defaultValue={post.author} />
+                  <Input
+                    id="author"
+                    name="author"
+                    defaultValue={fetchedPosts.author}
+                  />
                   {errors.author && (
                     <p className="text-sm text-destructive">{errors.author}</p>
                   )}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, JSX } from "react";
 import { useRouter } from "next/navigation";
 import {
   Table,
@@ -30,9 +30,11 @@ import {
 import Link from "next/link";
 import { feedback } from "@/lib/feedback";
 import { useAuth } from "@/contexts/auth-context";
-import { usePosts, type Post } from "@/contexts/posts-context";
 import { Navbar } from "@/components/navbar";
 import { StyledButton } from "@/components/styled-button";
+import { listPosts } from "@/api/list-posts";
+import { GetListPostsResponse, type Post } from "@/api/list-posts/response";
+import { deletePost } from "@/api/delete-post";
 
 type SortConfig = {
   key: keyof Post;
@@ -42,13 +44,26 @@ type SortConfig = {
 export default function AdminDashboard() {
   const router = useRouter();
   const { logout } = useAuth();
-  const { posts, deletePost } = usePosts();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [postToDelete, setPostToDelete] = useState<Post | null>(null);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
+  const [fetchedPosts, setPosts] = useState<GetListPostsResponse>([]);
 
-  const handleSort = (key: keyof Post) => {
+  const fetchPosts = async (): Promise<void> => {
+    try {
+      const posts = await listPosts();
+      setPosts(posts);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const handleSort = (key: keyof Post): void => {
     setSortConfig((current) => {
       if (current?.key === key) {
         if (current.direction === "asc") {
@@ -60,7 +75,7 @@ export default function AdminDashboard() {
     });
   };
 
-  const getSortIcon = (key: keyof Post) => {
+  const getSortIcon = (key: keyof Post): JSX.Element => {
     if (sortConfig?.key !== key) {
       return <ArrowUpDown className="ml-2 h-4 w-4" />;
     }
@@ -71,7 +86,7 @@ export default function AdminDashboard() {
     );
   };
 
-  const sortedPosts = [...posts].sort((a, b) => {
+  const sortedPosts = [...fetchedPosts].sort((a, b): number => {
     if (!sortConfig) return 0;
 
     const { key, direction } = sortConfig;
@@ -84,29 +99,28 @@ export default function AdminDashboard() {
     return 0;
   });
 
-  const filteredPosts = sortedPosts.filter((post) => {
+  const filteredPosts = sortedPosts.filter((post): boolean => {
     const searchContent =
       `${post.title} ${post.content} ${post.author}`.toLowerCase();
     return searchContent.includes(searchQuery.toLowerCase());
   });
 
-  const handleDeleteConfirm = async () => {
+  const handleDeleteConfirm = async (): Promise<void> => {
     if (!postToDelete) return;
 
     setIsDeleting(true);
+    setPostToDelete(null);
 
     await feedback.action(
       async () => {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        deletePost(postToDelete.id);
+        await deletePost(postToDelete.id.toString());
       },
       {
         loadingMessage: "Excluindo postagem...",
         successMessage: `Postagem "${postToDelete.title}" excluída com sucesso!`,
         successDescription: "A postagem foi removida permanentemente",
-        onSuccess: () => {
-          setPostToDelete(null);
+        onSuccess: async () => {
+          await fetchPosts();
         },
       }
     );
@@ -114,7 +128,7 @@ export default function AdminDashboard() {
     setIsDeleting(false);
   };
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     logout();
     feedback.success("Desconectado com sucesso", "Até a próxima!");
     router.push("/");
@@ -215,12 +229,10 @@ export default function AdminDashboard() {
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Ações</DropdownMenuLabel>
                         <DropdownMenuItem asChild>
-                          <Link href={`/posts/${post.slug}`}>
-                            Ver Postagens
-                          </Link>
+                          <Link href={`/posts/${post.id}`}>Ver Postagens</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem asChild>
-                          <Link href={`/edit-post/${post.slug}`}>Editar</Link>
+                          <Link href={`/edit-post/${post.id}`}>Editar</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           className="text-destructive"

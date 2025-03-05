@@ -10,7 +10,7 @@ import { listPosts } from "@/api/list-posts";
 import { GetListPostsResponse } from "@/api/list-posts/response";
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [fetchedPosts, setPosts] = useState<GetListPostsResponse>([]);
 
   const fetchPosts = async (): Promise<void> => {

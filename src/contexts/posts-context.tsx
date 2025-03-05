@@ -58,6 +58,11 @@ export function PostsProvider({ children }: { children: ReactNode }) {
   const [posts, setPosts] = useState<Post[]>(initialPosts);
 
   const addPost = (post: Omit<Post, "id" | "slug" | "createdAt">) => {
+    if (!post.title) {
+      console.error("Title is required to create a post");
+      return;
+    }
+
     const newPost: Post = {
       id: Math.max(0, ...posts.map((p) => p.id)) + 1,
       slug: post.title.toLowerCase().replace(/\s+/g, "-"),

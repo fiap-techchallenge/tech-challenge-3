@@ -15,12 +15,23 @@ import { usePosts } from "@/contexts/posts-context";
 import ProtectedRoute from "@/components/protected-route";
 import { Navbar } from "@/components/navbar";
 import { StyledButton } from "@/components/styled-button";
+import { newPost } from "@/api/new-post";
 
 export default function NewPost() {
   const router = useRouter();
   const { addPost } = usePosts();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<PostFormData>>({});
+
+  const addNewPost = async (data: PostFormData) => {
+    try {
+      const response = await newPost(data);
+      addPost(response);
+      return response;
+    } catch (error) {
+      throw new Error("Erro ao criar postagem");
+    }
+  };
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
@@ -36,14 +47,30 @@ export default function NewPost() {
       author: formData.get("author") as string,
     };
 
+    // Verificação de dados antes de enviar para o schema
+    if (!data.title || !data.content || !data.author) {
+      feedback.error(
+        "Erro ao criar postagem",
+        "Todos os campos são obrigatórios."
+      );
+      setIsLoading(false);
+      return;
+    }
+
     try {
+      // Validar dados antes de enviar
       await postSchema.validate(data, { abortEarly: false });
 
       await feedback.action(
         async () => {
-          // Simulate API call
           await new Promise((resolve) => setTimeout(resolve, 1500));
-          addPost(data);
+
+          const postResponse = await addNewPost(data);
+
+          if (postResponse) {
+            return;
+          }
+          throw new Error("Falha ao criar postagem");
         },
         {
           loadingMessage: "Criando postagem...",
@@ -67,6 +94,11 @@ export default function NewPost() {
         feedback.error(
           "Erro ao criar postagem",
           "Por favor, corrija os erros e tente novamente"
+        );
+      } else {
+        feedback.error(
+          "Erro ao criar postagem",
+          "Algo deu errado ao salvar seu post."
         );
       }
     } finally {

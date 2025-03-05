@@ -70,8 +70,11 @@ export const feedback = {
       toast.success(successMessage, {
         description: successDescription,
         duration: 5000,
-        onClose: onSuccess,
       });
+
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (error) {
       toast.dismiss(loadingToast);
       toast.error("Ocorreu um erro", {
