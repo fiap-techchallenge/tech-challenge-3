@@ -20,16 +20,13 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
 
-  // Check authentication status on mount
   useEffect(() => {
     const storedIsAdmin = localStorage.getItem("isAdmin") === "true";
     setIsAdmin(storedIsAdmin);
   }, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
-    // Simple authentication logic
     if (email === "admin@example.com" && password === "admin123") {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
       localStorage.setItem("isAdmin", "true");
       setIsAdmin(true);

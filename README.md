@@ -54,6 +54,9 @@ rota: `/admin`
 
 - Login para professores(as)
 - Restricao de acesso para paginas de criacao, edicao e administracao
+- Credenciais para login:
+  - Email: `admin@example.com`
+  - Senha: `admin123`
 
 ## Como Executar o Projeto
 
