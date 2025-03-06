@@ -1,59 +1,59 @@
-# Frontend para Aplicação de Blogging
+# Frontend para Aplicacao de Blogging
 
-## Descrição do Projeto
+## Descricao do Projeto
 
-Este projeto consiste no desenvolvimento da interface gráfica de uma aplicação de blogging, utilizando React, para proporcionar uma experiencia de usuário intuitiva e eficiente para professores(as) e estudantes. A aplicação permite a interação com os endpoints REST ja implementados no backend, garantindo funcionalidades essenciais como listagem, criação, edição e exclusão de postagens.
+Este projeto consiste no desenvolvimento da interface grafica de uma aplicacao de blogging, utilizando React, para proporcionar uma experiencia de usuario intuitiva e eficiente para professores(as) e estudantes. A aplicacao permite a interacao com os endpoints REST ja implementados no backend, garantindo funcionalidades essenciais como listagem, criacao, edicao e exclusao de postagens.
 
 ## Tecnologias Utilizadas
 
 - React com componentes funcionais e hooks
-- Tailwind para estilização
+- Tailwind para estilizacao
 - Axios para consumo da API REST
 - Context API
 
 ## Funcionalidades
 
-### 1. Página Principal (Lista de Posts)
+### 1. Pagina Principal (Lista de Posts)
 
 - Exibicao de uma lista de posts com titulo, autor e descricao breve
 - Campo de busca para filtragem de posts
 
 rota: `/`
 
-### 2. Página de Leitura de Post
+### 2. Pagina de Leitura de Post
 
 - Exibe o conteudo completo de um post
 
 rota: `/posts/:id`
 
-### 3. Página de Criação de Postagens
+### 3. Pagina de Criacao de Postagens
 
-- Formulario para criação de postagens por docentes
+- Formulario para criacao de postagens por docentes
 - Campos para titulo, conteudo e autor
 - Botao para enviar post ao servidor
 
 rota: `/new-post`
 
-### 4. Página de Edição de Postagens
+### 4. Pagina de Edicao de Postagens
 
-- Formulário para edição de postagens existentes
-- Carregamento dos dados do post para edição
-- Botão para salvar alteracoes
+- Formulario para edicao de postagens existentes
+- Carregamento dos dados do post para edicao
+- Botao para salvar alteracoes
 
 rota: `/edit-post/:id`
 
-### 5. Página Administrativa
+### 5. Pagina Administrativa
 
 - Lista de todas as postagens
-- Opções para editar e excluir posts
-- Controles de administracao restritos a usuários autenticados
+- Opcoes para editar e excluir posts
+- Controles de administracao restritos a usuarios autenticados
 
 rota: `/admin`
 
-### 6. Autenticação e Autorização
+### 6. Autenticacao e Autorizacao
 
 - Login para professores(as)
-- Restrição de acesso para páginas de criação, edição e administração
+- Restricao de acesso para paginas de criacao, edicao e administracao
 
 ## Como Executar o Projeto
 
@@ -64,19 +64,32 @@ rota: `/admin`
 
 ### Passos para Execucao
 
-1. Clone o repositório:
+1. Clone o repositorio:
    ```sh
    git clone https://github.com/fiap-techchallenge/tech-challenge-3.git
    ```
-2. Acesse o diretório do projeto:
+2. Acesse o diretorio do projeto:
    ```sh
    cd tech-challenge-3
    ```
-3. Instale as dependências:
+3. Instale as dependencias:
    ```sh
    npm install
    ```
-4. Inicie a aplicação:
+4. Clone o repositório do backend e siga as instruções para executá-lo:
+
+   ```sh
+   git clone https://github.com/fiap-techchallenge/techChallenge2.git
+   ```
+
+   Certifique-se de seguir as instruções deste repositório para que o backend esteja rodando corretamente.
+
+5. Atualize a configuracao do arquivo `.env.development`:
+   - Localize a variavel `NEXT_PUBLIC_IS_MOCK` e altere seu valor para `false` quando estiver rodando o backend:
+   ```env
+   NEXT_PUBLIC_IS_MOCK=false
+   ```
+6. Inicie a aplicacao:
    ```sh
    npm start
    ```
@@ -86,24 +99,24 @@ rota: `/admin`
 ```
 / tech-challenge-3
   |-- src/
-      |-- components/      # Componentes reutilizáveis
-      |-- pages/           # Páginas da aplicação
+      |-- components/      # Componentes reutilizaveis
+      |-- pages/           # Paginas da aplicacao
       |-- hooks/           # Hooks custom
       |-- context/         # Gerenciamento de estado
       |-- styles/          # Estilizacao global
-      |-- lib/             # Funcoes utilitárias
-  |-- public/              # Arquivos estáticos
+      |-- lib/             # Funcoes utilitarias
+  |-- public/              # Arquivos estaticos
   |-- package.json         # Dependencias do projeto
   |-- README.md            # Documentacao do projeto
   |-- .gitignore           # Arquivos ignorados pelo git
-  |-- .eslintrc.json       # Configuração do ESLint
-  |-- .eslintrc.config.mjs # Configuração do ESLint
+  |-- .eslintrc.json       # Configuracao do ESLint
+  |-- .eslintrc.config.mjs # Configuracao do ESLint
   |-- .env.development     # Variaveis de ambiente para desenvolvimento
-  |-- .env.production      # Variaveis de ambiente para produção
-  |-- tailwind.config.js   # Configuração do Tailwind CSS
-  |-- postcss.config.js    # Configuração do PostCSS
-  |-- tsconfig.json        # Configuração do TypeScript
-  |-- next.config.js       # Configuração do Next.js
-  |-- components.json      # Configuração do Storybook
+  |-- .env.production      # Variaveis de ambiente para producao
+  |-- tailwind.config.js   # Configuracao do Tailwind CSS
+  |-- postcss.config.js    # Configuracao do PostCSS
+  |-- tsconfig.json        # Configuracao do TypeScript
+  |-- next.config.js       # Configuracao do Next.js
+  |-- components.json      # Configuracao do Storybook
   |-- next-env.d.ts        # Tipagem do Next.js
 ```
