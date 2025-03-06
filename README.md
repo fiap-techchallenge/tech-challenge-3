@@ -76,9 +76,17 @@ rota: `/admin`
    cd tech-challenge-3
    ```
 3. Instale as dependencias:
+
+   ```sh
+   yarn install
+   ```
+
+   ou
+
    ```sh
    npm install
    ```
+
 4. Clone o repositório do backend e siga as instruções para executá-lo:
 
    ```sh
@@ -93,8 +101,15 @@ rota: `/admin`
    NEXT_PUBLIC_IS_MOCK=false
    ```
 6. Inicie a aplicacao:
+
    ```sh
-   npm start
+   yarn dev
+   ```
+
+   ou
+
+   ```sh
+   npm run dev
    ```
 
 ## Estrutura do Projeto
