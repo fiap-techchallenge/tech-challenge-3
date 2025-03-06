@@ -35,6 +35,7 @@ import { StyledButton } from "@/components/styled-button";
 import { listPosts } from "@/api/list-posts";
 import { GetListPostsResponse, type Post } from "@/api/list-posts/response";
 import { deletePost } from "@/api/delete-post";
+import { formatDate } from "@/lib/formatDate";
 
 type SortConfig = {
   key: keyof Post;
@@ -211,12 +212,12 @@ export default function AdminDashboard() {
                   <TableCell>
                     <div className="font-medium">{post.title}</div>
                     <div className="text-sm text-muted-foreground line-clamp-1 md:hidden">
-                      {post.createdAt}
+                      {formatDate(post.createdAt)}
                     </div>
                   </TableCell>
                   <TableCell>{post.author}</TableCell>
                   <TableCell className="hidden md:table-cell">
-                    {post.createdAt}
+                    {formatDate(post.createdAt)}
                   </TableCell>
                   <TableCell>
                     <DropdownMenu>
