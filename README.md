@@ -15,7 +15,7 @@ Este projeto consiste no desenvolvimento da interface grafica de uma aplicação
 
 ### 1. Página Principal (Lista de Posts)
 
-- Exibicao de uma lista de posts com título, autor e descricao breve
+- Exibição de uma lista de posts com título, autor e descrição breve
 - Campo de busca para filtragem de posts
 
 rota: `/`
@@ -75,7 +75,7 @@ rota: `/admin`
    ```sh
    cd tech-challenge-3
    ```
-3. Instale as dependencias:
+3. Instale as dependências:
 
    ```sh
    yarn install
