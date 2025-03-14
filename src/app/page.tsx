@@ -60,7 +60,7 @@ export default function Home() {
               <Card key={post.id}>
                 <CardContent className="space-y-4 pt-6">
                   <h2 className="text-2xl font-bold">{post.title}</h2>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground truncate">
                     {post.content}
                   </p>
                   <p className="text-sm font-medium">
