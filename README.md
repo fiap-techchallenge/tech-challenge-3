@@ -53,7 +53,7 @@ rota: `/admin`
 ### 6. Autenticação e Autorização
 
 - Login para professores(as)
-- Restrição de acesso para paginas de criação, edição e administração
+- Restrição de acesso para páginas de criação, edição e administração
 - Credenciais para login:
   - Email: `admin@example.com`
   - Senha: `admin123`
@@ -117,24 +117,24 @@ rota: `/admin`
 ```
 / tech-challenge-3
   |-- src/
-      |-- components/      # Componentes reutilizaveis
-      |-- pages/           # Paginas da aplicação
+      |-- components/      # Componentes reutilizáveis
+      |-- pages/           # Páginas da aplicação
       |-- hooks/           # Hooks custom
       |-- context/         # Gerenciamento de estado
-      |-- styles/          # Estilizacao global
-      |-- lib/             # Funcoes utilitarias
-  |-- public/              # Arquivos estaticos
-  |-- package.json         # Dependencias do projeto
-  |-- README.md            # Documentacao do projeto
+      |-- styles/          # Estilização global
+      |-- lib/             # Funções utilitárias
+  |-- public/              # Arquivos estáticos
+  |-- package.json         # Dependências do projeto
+  |-- README.md            # Documentação do projeto
   |-- .gitignore           # Arquivos ignorados pelo git
-  |-- .eslintrc.json       # Configuracao do ESLint
-  |-- .eslintrc.config.mjs # Configuracao do ESLint
+  |-- .eslintrc.json       # Configuração do ESLint
+  |-- .eslintrc.config.mjs # Configuração do ESLint
   |-- .env.development     # Variáveis de ambiente para desenvolvimento
-  |-- .env.production      # Variáveis de ambiente para producao
-  |-- tailwind.config.js   # Configuracao do Tailwind CSS
-  |-- postcss.config.js    # Configuracao do PostCSS
-  |-- tsconfig.json        # Configuracao do TypeScript
-  |-- next.config.js       # Configuracao do Next.js
-  |-- components.json      # Configuracao do Storybook
+  |-- .env.production      # Variáveis de ambiente para produção
+  |-- tailwind.config.js   # Configuração do Tailwind CSS
+  |-- postcss.config.js    # Configuração do PostCSS
+  |-- tsconfig.json        # Configuração do TypeScript
+  |-- next.config.js       # Configuração do Next.js
+  |-- components.json      # Configuração do Storybook
   |-- next-env.d.ts        # Tipagem do Next.js
 ```
