@@ -1,59 +1,59 @@
 # Frontend para Aplicação de Blogging
 
-## Descricao do Projeto
+## Descrição do Projeto
 
-Este projeto consiste no desenvolvimento da interface grafica de uma aplicacao de blogging, utilizando React, para proporcionar uma experiencia de usuario intuitiva e eficiente para professores(as) e estudantes. A aplicacao permite a interacao com os endpoints REST ja implementados no backend, garantindo funcionalidades essenciais como listagem, criacao, edicao e exclusao de postagens.
+Este projeto consiste no desenvolvimento da interface grafica de uma aplicação de blogging, utilizando React, para proporcionar uma experiencia de usuário intuitiva e eficiente para professores(as) e estudantes. A aplicação permite a interacao com os endpoints REST ja implementados no backend, garantindo funcionalidades essenciais como listagem, criação, edição e exclusao de postagens.
 
 ## Tecnologias Utilizadas
 
 - React com componentes funcionais e hooks
-- Tailwind para estilizacao
+- Tailwind para estilização
 - Axios para consumo da API REST
 - Context API
 
 ## Funcionalidades
 
-### 1. Pagina Principal (Lista de Posts)
+### 1. Página Principal (Lista de Posts)
 
-- Exibicao de uma lista de posts com titulo, autor e descricao breve
+- Exibicao de uma lista de posts com título, autor e descricao breve
 - Campo de busca para filtragem de posts
 
 rota: `/`
 
-### 2. Pagina de Leitura de Post
+### 2. Página de Leitura de Post
 
-- Exibe o conteudo completo de um post
+- Exibe o conteúdo completo de um post
 
 rota: `/posts/:id`
 
-### 3. Pagina de Criacao de Postagens
+### 3. Página de Criação de Postagens
 
-- Formulario para criacao de postagens por docentes
-- Campos para titulo, conteudo e autor
-- Botao para enviar post ao servidor
+- Formulário para criação de postagens por docentes
+- Campos para título, conteúdo e autor
+- Botão para enviar post ao servidor
 
 rota: `/new-post`
 
-### 4. Pagina de Edicao de Postagens
+### 4. Página de Edição de Postagens
 
-- Formulario para edicao de postagens existentes
-- Carregamento dos dados do post para edicao
-- Botao para salvar alteracoes
+- Formulário para edição de postagens existentes
+- Carregamento dos dados do post para edição
+- Botão para salvar alterações
 
 rota: `/edit-post/:id`
 
-### 5. Pagina Administrativa
+### 5. Página Administrativa
 
 - Lista de todas as postagens
-- Opcoes para editar e excluir posts
-- Controles de administracao restritos a usuarios autenticados
+- Opções para editar e excluir posts
+- Controles de administração restritos a usuarios autenticados
 
 rota: `/admin`
 
-### 6. Autenticacao e Autorizacao
+### 6. Autenticação e Autorização
 
 - Login para professores(as)
-- Restricao de acesso para paginas de criacao, edicao e administracao
+- Restrição de acesso para paginas de criação, edição e administração
 - Credenciais para login:
   - Email: `admin@example.com`
   - Senha: `admin123`
@@ -65,13 +65,13 @@ rota: `/admin`
 - Node.js instalado
 - Gerenciador de pacotes npm ou yarn
 
-### Passos para Execucao
+### Passos para Execução
 
-1. Clone o repositorio:
+1. Clone o repositório:
    ```sh
    git clone https://github.com/fiap-techchallenge/tech-challenge-3.git
    ```
-2. Acesse o diretorio do projeto:
+2. Acesse o diretório do projeto:
    ```sh
    cd tech-challenge-3
    ```
@@ -100,7 +100,7 @@ rota: `/admin`
    ```env
    NEXT_PUBLIC_IS_MOCK=false
    ```
-6. Inicie a aplicacao:
+6. Inicie a aplicação:
 
    ```sh
    yarn dev
@@ -118,7 +118,7 @@ rota: `/admin`
 / tech-challenge-3
   |-- src/
       |-- components/      # Componentes reutilizaveis
-      |-- pages/           # Paginas da aplicacao
+      |-- pages/           # Paginas da aplicação
       |-- hooks/           # Hooks custom
       |-- context/         # Gerenciamento de estado
       |-- styles/          # Estilizacao global
@@ -129,8 +129,8 @@ rota: `/admin`
   |-- .gitignore           # Arquivos ignorados pelo git
   |-- .eslintrc.json       # Configuracao do ESLint
   |-- .eslintrc.config.mjs # Configuracao do ESLint
-  |-- .env.development     # Variaveis de ambiente para desenvolvimento
-  |-- .env.production      # Variaveis de ambiente para producao
+  |-- .env.development     # Variáveis de ambiente para desenvolvimento
+  |-- .env.production      # Variáveis de ambiente para producao
   |-- tailwind.config.js   # Configuracao do Tailwind CSS
   |-- postcss.config.js    # Configuracao do PostCSS
   |-- tsconfig.json        # Configuracao do TypeScript
