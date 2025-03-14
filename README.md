@@ -1,4 +1,4 @@
-# Frontend para Aplicacao de Blogging
+# Frontend para Aplicação de Blogging
 
 ## Descricao do Projeto
 
